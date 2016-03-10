@@ -1,6 +1,7 @@
 //game variables
 int lives = 3;// number of lives
 int score = 0;
+float immunity = 0;
 
 //ship variables
 PImage trump1; // asteroid 1
@@ -73,6 +74,7 @@ void draw() {
       text("Lives: " + lives, 25, 30);
       //fire rate control
       fireRate();
+      immunityDecay();
       //draw asteroids
       //check shipe collide
       collide();
