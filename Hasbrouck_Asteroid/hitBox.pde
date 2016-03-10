@@ -16,5 +16,5 @@ class hitBox {
      // constructor to draw circles in each i=teration
     void render() {    
         ellipse(x,y,r*2, r*2);
-    }            
+    }    
 }

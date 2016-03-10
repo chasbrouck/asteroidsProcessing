@@ -1,5 +1,5 @@
 //game variables
-float lives = 3;// number of lives
+int lives = 3;// number of lives
 int score = 0;
 
 //ship variables
@@ -15,7 +15,9 @@ PVector accel;//ships acceleration
 float[] a = new float[5];
 float[] b = new float[5];
 int i = 0;
+int s= 0;
 
+//
 ArrayList <Asteroid> asteroids; 
 
 //bullets array
@@ -23,7 +25,6 @@ ArrayList <Bullet> bullets;
 float bulletCount = 0;
 
 //array for asteroids creation and ship hitbox
-hitBox[] asteroid = new hitBox[5];
 hitBox shipHit = new hitBox(0,0,25);
 
 void setup() {
@@ -33,14 +34,6 @@ void setup() {
   stroke(255);
   strokeWeight(5);
   
-  //create asteroids
-  while(i < 5) { 
-    //place randoms into an array to store for later
-    a[i] = random(0, width);
-    b[i] = random(0, height);
-    i = i + 1;
-  }
-  
   trump1 = loadImage("trump1.png");
   bernie = loadImage("bernie.png");
   bullets = new ArrayList();
@@ -48,6 +41,12 @@ void setup() {
   location = new PVector(width/2, height/2, 0);
   velocity = new PVector();
   accel = new PVector();
+  
+  while (s < 5)
+  {
+    distanceAsteroid();
+    s++;
+  }
 }
  
 
@@ -57,13 +56,24 @@ void draw() {
   input();
  
  //if you still haves lives play
- if ( lives > 0) {
+ /*<if (lives == 4)
+ {
+   background(#262626);
+   textSize(50);
+   text("Click To Play", (width/2)-200, height/2);
+  if(mousePressed ==true)
+  {
+    lives = 3;
+  }
+ }*/
+ if( lives > 0 && lives < 4) {
      //backgrount color
       background(#262626);
+      textSize(20);
+      text("Lives: " + lives, 25, 30);
       //fire rate control
       fireRate();
       //draw asteroids
-      trump();
       //check shipe collide
       collide();
       //check bullet collide
@@ -75,8 +85,8 @@ void draw() {
       //move and display cullet
       moveAll();
       displayAll();
-      AmoveAll();
-      AdisplayAll();
+      moveAsteroid();
+      displayAsteroid();
       //draw ship
       ship();
    
@@ -98,7 +108,7 @@ void draw() {
         }
  }
  //lose condition
- else {
+ if (lives < 1) {
    background(#262626);
    textSize(50);
    text("Score: " + score, (width/2)-200, height/2);
@@ -138,26 +148,7 @@ void input() {
     }
     if (keyCode == SHIFT && bulletCount == 0) {
       fire();  
-      Afire();
       bulletCount = 20;
-      
     }
    }
-}
-
-//draw asteroid method
-void trump(){
-  int i = 0;
-      while(i < 5) {
-        asteroid[i] = new hitBox(a[i],b[i],23);
-        if(b[i] > height){
-          b[i] = 0;
-        }
-        if(a[i] < 0) {
-          a[i] = width;
-        }
-        asteroid[i].render();
-        image(trump1, a[i]-25, b[i]-24, 50, 50);
-        i = i + 1;;
-      }
 }
