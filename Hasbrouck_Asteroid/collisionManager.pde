@@ -1,7 +1,20 @@
+float lastX = 0;
+float lastY = 0;
+
 void collide() {
         //if the x or y of either circle is less that the radius of the circle
         // a collision has occured 
    for( Asteroid asteroidCheck : asteroids)
+   {
+     if((dist(asteroidCheck.x, asteroidCheck.y, location.x, location.y) < 25 + shipHit.r) && immunity == 0)
+     {
+       lives--;
+       immunity = 100;
+       location.x = width/2;
+       location.y = height/2;
+     }
+   }
+   for( Asteroid asteroidCheck : asteroids2)
    {
      if((dist(asteroidCheck.x, asteroidCheck.y, location.x, location.y) < 25 + shipHit.r) && immunity == 0)
      {
@@ -28,6 +41,8 @@ void boom(){
      {
        if(dist(asteroidCheck.x, asteroidCheck.y, bulletCheck.x, bulletCheck.y) < 30)
        {
+         lastX = asteroidCheck.x;
+         lastY = asteroidCheck.y;
          asteroidCheck.z = 0;
          asteroidCheck.z2 = 0;
          asteroidCheck.x = -1500;
@@ -36,6 +51,31 @@ void boom(){
          bulletCheck.x = 1500;
          bulletCheck.y = 1500;
          score++;
+         
+        
+         distanceAsteroid2();
+         distanceAsteroid2();
+         distanceAsteroid2();
+         distanceAsteroid2();
+         
+           
+       }
+     }
+     for( Asteroid asteroidCheck : asteroids2)
+     {
+       if(dist(asteroidCheck.x, asteroidCheck.y, bulletCheck.x, bulletCheck.y) < 25)
+       {
+         lastX = asteroidCheck.x;
+         lastY = asteroidCheck.y;
+         asteroidCheck.z = 0;
+         asteroidCheck.z2 = 0;
+         asteroidCheck.x = -1500;
+         asteroidCheck.y = -1500;
+         bulletCheck.z = 0;
+         bulletCheck.x = 1500;
+         bulletCheck.y = 1500;
+         score++;
+          
        }
      }
    }

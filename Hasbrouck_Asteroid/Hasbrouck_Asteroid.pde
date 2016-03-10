@@ -20,6 +20,7 @@ int s= 0;
 
 //
 ArrayList <Asteroid> asteroids; 
+ArrayList <Asteroid> asteroids2; 
 
 //bullets array
 ArrayList <Bullet> bullets; 
@@ -40,6 +41,7 @@ void setup() {
   bernie = loadImage("bernie.png");
   bullets = new ArrayList();
   asteroids = new ArrayList();
+  asteroids2 = new ArrayList();
   location = new PVector(width/2, height/2, 0);
   velocity = new PVector();
   accel = new PVector();

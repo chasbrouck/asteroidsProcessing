@@ -18,11 +18,19 @@ class Asteroid
  
   }
  
+ 
   void display()
   {
     fill(255, 255, 255);
     ellipse(x, y, 50, 50);
     image(trump1, x-25, y-25, 50, 50);
+  }
+  
+  void display2()
+  {
+    fill(255, 255, 255);
+    ellipse(x, y, 30, 30);
+    image(trump2, x-15, y-15, 30, 30);
   }
  
   void move()
@@ -65,6 +73,10 @@ void moveAsteroid()
   { 
     temp.move();
   }
+  for (Asteroid temp : asteroids2)
+  { 
+    temp.move();
+  }
 }
  
 void displayAsteroid()
@@ -72,6 +84,10 @@ void displayAsteroid()
   for (Asteroid temp : asteroids)
   {
     temp.display();
+  }
+  for (Asteroid temp : asteroids2)
+  {
+    temp.display2();
   }
 }
 void distanceAsteroid(){
@@ -102,5 +118,35 @@ void distanceAsteroid(){
     asteroidSpd.mult(2);
     
     asteroids.add( new Asteroid(asteroidPosition, asteroidSpd, 1,1) );
+    
+}
+void distanceAsteroid2(){
+   PVector asteroidSpd = new PVector();
+   float r = random(-10, 90);
+   float x = lastX;
+   float y = lastY;
+    asteroidSpd.set(1, 0);
+    //bulletSpd.sub(position);
+    asteroidSpd.normalize();
+    asteroidSpd.mult(5);
+ 
+    PVector asteroidPosition = new PVector();
+ 
+   //asteroid
+    asteroidPosition.x = x;
+    asteroidPosition.y = y;
+ 
+   //bullet direction
+    asteroidSpd.x = - (1) * cos ((r)) + asteroidPosition.x;
+    asteroidSpd.y = - (1) * sin ((r)) + asteroidPosition.y;
+ 
+ 
+    asteroidSpd.sub(asteroidPosition);
+ 
+    //bulletSpd = asteroidPosition.get(); 
+    asteroidSpd.normalize();
+    asteroidSpd.mult(2);
+    
+    asteroids2.add( new Asteroid(asteroidPosition, asteroidSpd, 1,1) );
     
 }
