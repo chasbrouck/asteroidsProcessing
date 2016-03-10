@@ -1,7 +1,7 @@
 //game variables
 int lives = 3;// number of lives
 int score = 0;
-float immunity = 0;
+float immunity = 100;
 
 //ship variables
 PImage trump1; // asteroid 1
@@ -114,10 +114,10 @@ void draw() {
         }
  }
  //lose condition
- if (lives < 1) {
+ if (lives < 1 || score ==25) {
    background(#262626);
    textSize(50);
-   text("Score: " + score, (width/2)-200, height/2);
+   text("Trumps Destroyed: " + score, (width/2)-300, height/2);
    
  }
 }
