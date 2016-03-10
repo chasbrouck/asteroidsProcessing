@@ -36,6 +36,7 @@ void setup() {
   strokeWeight(5);
   
   trump1 = loadImage("trump1.png");
+  trump2 = loadImage("trump2v.png");
   bernie = loadImage("bernie.png");
   bullets = new ArrayList();
   asteroids = new ArrayList();
@@ -72,6 +73,7 @@ void draw() {
       background(#262626);
       textSize(20);
       text("Lives: " + lives, 25, 30);
+      text("Score: " + score, 25, 60);
       //fire rate control
       fireRate();
       immunityDecay();

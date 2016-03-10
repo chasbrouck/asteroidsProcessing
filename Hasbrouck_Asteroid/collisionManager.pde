@@ -28,6 +28,11 @@ void boom(){
      {
        if(dist(asteroidCheck.x, asteroidCheck.y, bulletCheck.x, bulletCheck.y) < 30)
        {
+         asteroidCheck.z = 0;
+         asteroidCheck.z2 = 0;
+         asteroidCheck.x = -1500;
+         asteroidCheck.y = -1500;
+         bulletCheck.z = 0;
          bulletCheck.x = 1500;
          bulletCheck.y = 1500;
          score++;

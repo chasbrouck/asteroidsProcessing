@@ -3,14 +3,17 @@ class Asteroid
 {
   float x;
   float y;
+  int z;
+  int z2;
  
   PVector  asteroidSpd = new PVector();
  
-  Asteroid(PVector pos2, PVector spd2)
+  Asteroid(PVector pos2, PVector spd2, int alive, int move)
   {  
     x = pos2.x;
     y = pos2.y;
- 
+    z = alive;
+    z2 = move;
     asteroidSpd =   spd2.get();
  
   }
@@ -24,24 +27,31 @@ class Asteroid
  
   void move()
   {
-    x += asteroidSpd.x;
-    y += asteroidSpd.y;
-    if( x > width+20)
+    if ( z == 1)
     {
-      x=0;
+      x += asteroidSpd.x;
+      y += asteroidSpd.y;
     }
-    if( x < -20)
-    {
-      x=width;
-    }
-    if( y > height+20)
-    {
-      y=0;
-    }
-    if( y < -20)
-    {
-      y=height;
-    }
+    
+    if ( z == 1)
+      {
+        if( x > width+20)
+        {
+          x=0;
+        }
+        if( x < -20)
+        {
+          x=width;
+        }
+        if( y > height+20)
+        {
+          y=0;
+        }
+        if( y < -20)
+        {
+          y=height;
+        }
+     }
   }
 
 } // class
@@ -91,6 +101,6 @@ void distanceAsteroid(){
     asteroidSpd.normalize();
     asteroidSpd.mult(2);
     
-    asteroids.add( new Asteroid(asteroidPosition, asteroidSpd) );
+    asteroids.add( new Asteroid(asteroidPosition, asteroidSpd, 1,1) );
     
 }

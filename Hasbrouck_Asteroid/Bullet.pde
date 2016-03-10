@@ -3,13 +3,15 @@ class Bullet
 {
   float x;
   float y;
+  float z;
  
   PVector  bulletSpd = new PVector();
  
-  Bullet(PVector pos1, PVector spd1)
+  Bullet(PVector pos1, PVector spd1, int move)
   {  
     x = pos1.x;
     y = pos1.y;
+    z = move;
  
     bulletSpd =   spd1.get();
  
@@ -23,9 +25,12 @@ class Bullet
   }
  
   void move()
-  {
-    x += bulletSpd.x;
-    y += bulletSpd.y;
+  { 
+    if (z == 1)
+    {
+      x += bulletSpd.x;
+      y += bulletSpd.y;
+    }
   }
   //
 } // class
@@ -62,6 +67,7 @@ void fire(){
     positionbullet.y = -(1) * sin ((accel.y)) + location.y;
  
    //bullet direction
+
     bulletSpd.x = - (1) * cos ((direction+1.55)) + positionbullet.x;
     bulletSpd.y = - (1) * sin ((direction+1.55)) + positionbullet.y;
  
@@ -72,7 +78,7 @@ void fire(){
     bulletSpd.normalize();
     bulletSpd.mult(5);
     
-    bullets.add( new Bullet(positionbullet, bulletSpd) );
+    bullets.add( new Bullet(positionbullet, bulletSpd, 1) );
 }
 
 void fireRate(){
