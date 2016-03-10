@@ -16,6 +16,8 @@ float[] a = new float[5];
 float[] b = new float[5];
 int i = 0;
 
+ArrayList <Asteroid> asteroids; 
+
 //bullets array
 ArrayList <Bullet> bullets; 
 float bulletCount = 0;
@@ -42,6 +44,7 @@ void setup() {
   trump1 = loadImage("trump1.png");
   bernie = loadImage("bernie.png");
   bullets = new ArrayList();
+  asteroids = new ArrayList();
   location = new PVector(width/2, height/2, 0);
   velocity = new PVector();
   accel = new PVector();
@@ -72,6 +75,8 @@ void draw() {
       //move and display cullet
       moveAll();
       displayAll();
+      AmoveAll();
+      AdisplayAll();
       //draw ship
       ship();
    
@@ -133,7 +138,9 @@ void input() {
     }
     if (keyCode == SHIFT && bulletCount == 0) {
       fire();  
+      Afire();
       bulletCount = 20;
+      
     }
    }
 }
