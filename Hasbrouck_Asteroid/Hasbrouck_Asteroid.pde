@@ -1,11 +1,13 @@
 //game variables
-int lives = 3;// number of lives
+int lives = 4;// number of lives
 int score = 0;
 float immunity = 100;
 
 //ship variables
 PImage trump1; // asteroid 1
 PImage trump2; // asteroid 2
+PImage trump3;
+PImage ship;
 PImage bernie; // ship image
 float direction;//ships direction
 PVector location;//transformation location
@@ -21,6 +23,7 @@ int s= 0;
 //
 ArrayList <Asteroid> asteroids; 
 ArrayList <Asteroid> asteroids2; 
+ArrayList <Asteroid> asteroids3; 
 
 //bullets array
 ArrayList <Bullet> bullets; 
@@ -38,15 +41,16 @@ void setup() {
   
   trump1 = loadImage("trump1.png");
   trump2 = loadImage("trump2v.png");
+  trump3 = loadImage("trump3.png");
   bernie = loadImage("bernie.png");
   bullets = new ArrayList();
   asteroids = new ArrayList();
   asteroids2 = new ArrayList();
+  asteroids3 = new ArrayList();
   location = new PVector(width/2, height/2, 0);
   velocity = new PVector();
   accel = new PVector();
-  
-  while (s < 5)
+  while (s < 3)
   {
     distanceAsteroid();
     s++;
@@ -60,16 +64,17 @@ void draw() {
   input();
  
  //if you still haves lives play
- /*<if (lives == 4)
+ if (lives == 4)
  {
    background(#262626);
    textSize(50);
    text("Click To Play", (width/2)-200, height/2);
   if(mousePressed ==true)
   {
+    ship = bernie;
     lives = 3;
   }
- }*/
+ }
  if( lives > 0 && lives < 4) {
      //backgrount color
       background(#262626);
@@ -114,7 +119,7 @@ void draw() {
         }
  }
  //lose condition
- if (lives < 1 || score ==25) {
+ if (lives < 1 || score ==100) {
    background(#262626);
    textSize(50);
    text("Trumps Destroyed: " + score, (width/2)-300, height/2);
@@ -131,7 +136,7 @@ void ship() {
     rotate(direction); 
     // Display the ship & hit box  
     shipHit.render();  
-    image(bernie, -trump1.width/24, -trump1.height/24, 50, 52);    
+    image(ship, -trump1.width/24, -trump1.height/24, 50, 52);    
    popMatrix(); 
 }
 
