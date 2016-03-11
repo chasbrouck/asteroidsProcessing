@@ -65,8 +65,8 @@ void boom(){
         
          distanceAsteroid2();
          distanceAsteroid2();
+         distanceAsteroid2();
          
-           
        }
      }
      for( Asteroid asteroidCheck : asteroids2)
@@ -84,6 +84,7 @@ void boom(){
          bulletCheck.y = 1500;
          score++;
          
+         distanceAsteroid3();
          distanceAsteroid3();
          distanceAsteroid3();
        }

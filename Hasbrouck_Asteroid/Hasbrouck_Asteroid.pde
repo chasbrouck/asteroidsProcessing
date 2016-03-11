@@ -9,6 +9,7 @@ PImage trump2; // asteroid 2
 PImage trump3;
 PImage ship;
 PImage bernie; // ship image
+PImage hillary;
 float direction;//ships direction
 PVector location;//transformation location
 PVector velocity;//ships speeds
@@ -43,6 +44,7 @@ void setup() {
   trump2 = loadImage("trump2v.png");
   trump3 = loadImage("trump3.png");
   bernie = loadImage("bernie.png");
+  hillary = loadImage("clinton.png");
   bullets = new ArrayList();
   asteroids = new ArrayList();
   asteroids2 = new ArrayList();
@@ -67,13 +69,25 @@ void draw() {
  if (lives == 4)
  {
    background(#262626);
+   image(bernie, 100, 200, 200, 200); 
+   image(hillary, 500, 200, 200, 200); 
    textSize(50);
-   text("Click To Play", (width/2)-200, height/2);
+   text("Choose Your Candidate", (width/2)-275, 75);
+   
   if(mousePressed ==true)
   {
-    ship = bernie;
-    lives = 3;
+    if(mouseX < width/2)
+    {
+      ship = bernie;
+      lives = 3;
+    }
+    if(mouseX > width/2)
+    {
+      ship = hillary;
+      lives = 3;
+    }
   }
+  
  }
  if( lives > 0 && lives < 4) {
      //backgrount color
@@ -119,7 +133,7 @@ void draw() {
         }
  }
  //lose condition
- if (lives < 1 || score ==100) {
+ if (lives < 1 || score ==39) {
    background(#262626);
    textSize(50);
    text("Trumps Destroyed: " + score, (width/2)-300, height/2);
