@@ -20,6 +20,7 @@ class Bullet
  
   void display()
   {
+    stroke(255);
     fill(255, 255, 255);
     ellipse(x, y, 5, 5);
   }

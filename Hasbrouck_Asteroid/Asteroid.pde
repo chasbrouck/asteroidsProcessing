@@ -21,20 +21,23 @@ class Asteroid
  
   void display()
   {
-    fill(255, 255, 255);
+    stroke(#3385ff, 0);
+    fill(#3385ff, 0);
     ellipse(x, y, 80, 80);
     image(trump1, x-40, y-40, 80, 80);
   }
   
   void display2()
   {
-    fill(255, 255, 255);
+    stroke(#3385ff, 0);
+    fill(#3385ff, 0);
     ellipse(x, y, 60, 60);
     image(trump2, x-30, y-30, 60, 60);
   }
   void display3()
   {
-    fill(255, 255, 255);
+    stroke(#3385ff, 0);
+    fill(#3385ff, 0);
     ellipse(x, y, 40, 40);
     image(trump3, x-20, y-20, 40, 40);
   }

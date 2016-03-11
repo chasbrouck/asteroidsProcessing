@@ -37,7 +37,7 @@ void setup() {
   //size of area
   size(800, 500);
   //color and stroke of hitbox
-  stroke(255);
+  stroke(#3385ff);
   strokeWeight(5);
   
   trump1 = loadImage("trump1.png");
@@ -68,11 +68,11 @@ void draw() {
  //if you still haves lives play
  if (lives == 4)
  {
-   background(#262626);
+   background(#3385ff);
    image(bernie, 100, 200, 200, 200); 
    image(hillary, 500, 200, 200, 200); 
    textSize(50);
-   text("Choose Your Candidate", (width/2)-275, 75);
+   text("Choose Your Candidate", (width/2)-275, 125);
    
   if(mousePressed ==true)
   {
@@ -91,8 +91,9 @@ void draw() {
  }
  if( lives > 0 && lives < 4) {
      //backgrount color
-      background(#262626);
+      background(#3385ff);
       textSize(20);
+      fill(255);
       text("Lives: " + lives, 25, 30);
       text("Score: " + score, 25, 60);
       //fire rate control
@@ -134,9 +135,11 @@ void draw() {
  }
  //lose condition
  if (lives < 1 || score ==39) {
-   background(#262626);
+   background(#ff4d4d);
    textSize(50);
-   text("Trumps Destroyed: " + score, (width/2)-300, height/2);
+   fill(255);
+   text("Trumps Destroyed: "+score, (width/2)-265, 100);
+   image(trump2, 300, 200, 200, 200); 
    
  }
 }
