@@ -80,10 +80,8 @@ class Asteroid
      }
   }
 
-} // class
- 
-// ===============================================
- 
+}
+
 //move asteroid function manager 
 void moveAsteroid()
 {

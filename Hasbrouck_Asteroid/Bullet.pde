@@ -1,12 +1,14 @@
 class Bullet  
-//  bullet class
 {
+  //x,y and active variables
   float x;
   float y;
   float z;
  
+   //vector for bullet
   PVector  bulletSpd = new PVector();
  
+ //constructor for bullet
   Bullet(PVector pos1, PVector spd1, int move)
   {  
     x = pos1.x;
@@ -15,9 +17,9 @@ class Bullet
  
     bulletSpd =   spd1.get();
  
-    // bullets.add(new Bullet(playerPos, bulletSpd));  // ???????????
   }
  
+ //draw bullet
   void display()
   {
     stroke(255);
@@ -26,20 +28,19 @@ class Bullet
     ellipse(x, y, 5, 5);
   }
  
+ //move bullet
   void move()
   { 
+    //condition for bullet movement
     if (z == 1)
     {
       x += bulletSpd.x;
       y += bulletSpd.y;
     }
   }
-  //
-} // class
- 
-// ===============================================
- 
- 
+} 
+
+//move all bullet
 void moveAll()
 {
   for (Bullet temp : bullets)
@@ -47,7 +48,8 @@ void moveAll()
     temp.move();
   }
 }
- 
+
+//display all bullet
 void displayAll()
 {
   for (Bullet temp : bullets)
@@ -55,34 +57,37 @@ void displayAll()
     temp.display();
   }
 }
+
+//fire function on button press
 void fire(){
+  
+  //vector for bulelt speed 
    PVector bulletSpd = new PVector();
     bulletSpd.set(3, 0);
-    //bulletSpd.sub(position);
     bulletSpd.normalize();
     bulletSpd.mult(5);
  
+ //vector for bullet direction
     PVector positionbullet = new PVector();
  
-   //where bullets start from
+   //bullet starting location
     positionbullet.x = -(1) * cos ((accel.x)) + location.x;
     positionbullet.y = -(1) * sin ((accel.y)) + location.y;
  
-   //bullet direction
-
+   //bullet fire direction
     bulletSpd.x = - (1) * cos ((direction+1.55)) + positionbullet.x;
     bulletSpd.y = - (1) * sin ((direction+1.55)) + positionbullet.y;
  
  
     bulletSpd.sub(positionbullet);
- 
-    //bulletSpd = positionbullet.get(); 
     bulletSpd.normalize();
     bulletSpd.mult(5);
     
+    //add bullet to array list
     bullets.add( new Bullet(positionbullet, bulletSpd, 1) );
 }
 
+//controls fire rate
 void fireRate(){
   if (bulletCount > 0)
   {
